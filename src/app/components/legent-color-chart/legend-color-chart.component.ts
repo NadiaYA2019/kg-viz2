@@ -17,10 +17,9 @@ export class LegendColorChartComponent {
   @Input() color4!: string;
   @Input() color5!: string;
   @Input() colors!: string[];
-  @Input() unit!: string;
 
-  gradientBar! : HTMLElement;
-  indicators! : HTMLCollectionOf<Element>;
+  gradientBar!: HTMLElement;
+  indicators!: HTMLCollectionOf<Element>;
   counter!: number;
 
   ngOnInit() {
@@ -34,21 +33,23 @@ export class LegendColorChartComponent {
       let topValue = this.counter + "px";
       this.indicators[x].setAttribute("style", "top:" + topValue);
       this.counter += barHeight / numberOfIndicators + 0;
-      console.log("counter: ", this.counter);
     }
     this.changeColor();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.changeColor();
   }
-    //changing gradient colors
-  changeColor(){
-      document.documentElement.style.setProperty('--color1', this.color1+'');
-      document.documentElement.style.setProperty('--color2', this.color2+'');
-      document.documentElement.style.setProperty('--color3', this.color3+'');
-      document.documentElement.style.setProperty('--color4', this.color4+'');
-      document.documentElement.style.setProperty('--color5', this.color5+'');
+
+  /**
+   * changing gradient colors using css variables
+   */
+  changeColor() {
+    document.documentElement.style.setProperty('--color1', this.color1 + '');
+    document.documentElement.style.setProperty('--color2', this.color2 + '');
+    document.documentElement.style.setProperty('--color3', this.color3 + '');
+    document.documentElement.style.setProperty('--color4', this.color4 + '');
+    document.documentElement.style.setProperty('--color5', this.color5 + '');
   }
 
 
